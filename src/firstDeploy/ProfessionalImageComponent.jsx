@@ -8,7 +8,7 @@ const ProfessionalImageComponent = () => {
       <div className="flex flex-wrap justify-center gap-6 mb-6 mt-0">
         {/* Slack Button */}
         <a
-          href="https://bit.ly/42hSjff"
+          href="https://join.slack.com/t/xto10x-talk/shared_invite/zt-2yal8bdwg-B5OLgAYkkML5HlgUOa_SiA"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 bg-red-400 text-white py-3 px-6 rounded-lg shadow hover:bg-red-500 transition duration-300"
@@ -30,7 +30,7 @@ const ProfessionalImageComponent = () => {
 
         {/* YouTube Button */}
         <a
-          href="https://youtube.com/live/wOnJnE7Vs0w?feature=share"
+          href="https://www.youtube.com/watch?v=kb4joSzUu4k"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 bg-red-500 text-white py-3 px-6 rounded-lg shadow hover:bg-red-600 transition duration-300"
@@ -44,7 +44,7 @@ const ProfessionalImageComponent = () => {
       <img
         src="https://ik.imagekit.io/74a8dncgy/xto10x.jpg?updatedAt=1737041745666"
         alt="Professional"
-        className="w-2/3 rounded-xl shadow-md mb-10" // Rounded corners and smaller size
+        className="w-full sm:w-2/3 rounded-xl shadow-md mb-10" // Make the image full width on small screens and 2/3 on larger screens
       />
 
     </div>

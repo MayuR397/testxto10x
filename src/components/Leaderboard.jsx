@@ -63,13 +63,19 @@ const Leaderboard = ({ groups }) => {
       setLoading(false);
     };
 
-    if (groups.length > 0) fetchGroupData();
+    // Fetch data immediately
+    fetchGroupData();
+
+    // Refresh data every 5 minutes
+    const interval = setInterval(fetchGroupData, 5 * 60 * 1000);
+
+    return () => clearInterval(interval); // Clear interval on unmount
   }, [groups]);
 
   if (loading) {
     return (
       <p className="text-center text-lg text-gray-600">
-        Loading leaderboard...
+        Loading leaderboard... 🕒
       </p>
     );
   }
@@ -150,6 +156,16 @@ const Leaderboard = ({ groups }) => {
             </tbody>
           </table>
         </div>
+        {errorGroups.length > 0 && (
+          <div className="mt-6 text-red-500 text-sm">
+            <p>⚠️ Could not fetch data for the following groups:</p>
+            <ul className="list-disc ml-6">
+              {errorGroups.map((group, index) => (
+                <li key={index}>{group}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

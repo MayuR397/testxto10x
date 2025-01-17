@@ -81,6 +81,7 @@ const EventSchedule = () => {
   ];
 
   const [selectedDay, setSelectedDay] = useState("Friday");
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle the menu
 
   const days = ["Friday", "Saturday", "Sunday"];
   const scheduleByDay = days.map((day) => ({
@@ -90,27 +91,75 @@ const EventSchedule = () => {
 
   const handleDayClick = (day) => {
     setSelectedDay(day);
+    setIsMenuOpen(false); // Close the menu after selection
   };
 
   return (
     <div className="bg-gray-50 py-12 px-6">
       <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg p-6">
-        {/* Navbar-style Days */}
-        <div className="flex justify-center mb-8">
-          {days.map((day) => (
+        {/* Navbar-style Days with Menu Toggle for Small Screens */}
+        <div className="flex justify-between items-center mb-8">
+          {/* Desktop view: buttons */}
+          <div className="hidden sm:flex justify-center space-x-4 m-auto">
+            {days.map((day) => (
+              <button
+                key={day}
+                onClick={() => handleDayClick(day)}
+                className={`px-6 py-2 font-semibold text-lg rounded-lg transition duration-300 ${
+                  selectedDay === day
+                    ? "bg-red-400 text-white"
+                    : "bg-gray-200 text-gray-700 hover:bg-red-500 hover:text-white"
+                }`}
+              >
+                {day}
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile view: Hamburger menu to toggle day selection */}
+          <div className="sm:hidden">
             <button
-              key={day}
-              onClick={() => handleDayClick(day)}
-              className={`px-6 py-2 font-semibold text-lg rounded-lg transition duration-300 mx-4 ${
-                selectedDay === day
-                  ? "bg-red-400 text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-red-500 hover:text-white"
-              }`}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="bg-gray-200 p-2 rounded-md shadow-md text-gray-700 hover:bg-gray-300"
             >
-              {day}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
             </button>
-          ))}
+          </div>
         </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMenuOpen && (
+          <div className="sm:hidden mb-6">
+            <div className="flex flex-col items-center space-y-4">
+              {days.map((day) => (
+                <button
+                  key={day}
+                  onClick={() => handleDayClick(day)}
+                  className={`px-6 py-2 font-semibold text-lg rounded-lg transition duration-300 ${
+                    selectedDay === day
+                      ? "bg-red-400 text-white"
+                      : "bg-gray-200 text-gray-700 hover:bg-red-500 hover:text-white"
+                  }`}
+                >
+                  {day}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Schedule for Selected Day */}
         {scheduleByDay
@@ -118,7 +167,7 @@ const EventSchedule = () => {
           .map((daySchedule, index) => (
             <div key={index}>
               <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse">
+                <table className="min-w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-red-400 text-white">
                       <th className="px-6 py-4 text-sm font-medium">Time</th>
