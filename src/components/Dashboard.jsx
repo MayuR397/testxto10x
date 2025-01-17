@@ -1,58 +1,39 @@
-import React, { useState, useEffect } from "react";
-import Leaderboard from "./Leaderboard";
+import React, { useState } from 'react';
+import Leaderboard from './Leaderboard';
 
 const Dashboard = () => {
   const [groups, setGroups] = useState([]);
-  const [selectedCourse, setSelectedCourse] = useState("fsd");
-  const [filteredGroups, setFilteredGroups] = useState([]);
 
-  useEffect(() => {
-    const fetchGroups = async () => {
-      try {
-        const response = await fetch(
-          "https://reactserver-103af-default-rtdb.asia-southeast1.firebasedatabase.app/groups.json"
-        );
-        if (!response.ok) {
-          throw new Error(`Failed to fetch data: ${response.statusText}`);
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const json = JSON.parse(e.target.result);
+          if (Array.isArray(json)) {
+            setGroups(json);
+          } else {
+            alert('Invalid JSON format');
+          }
+        } catch (error) {
+          alert('Error parsing JSON file');
         }
-        const data = await response.json();
-        setGroups(data);
-      } catch (error) {
-        console.error("Error fetching groups data:", error);
-      }
-    };
-
-    fetchGroups();
-  }, []);
-
-  useEffect(() => {
-    // Filter groups based on the selected course
-    setFilteredGroups(groups.filter((group) => group.course === selectedCourse));
-  }, [groups, selectedCourse]);
-
-  const handleCourseChange = (event) => {
-    setSelectedCourse(event.target.value);
+      };
+      reader.readAsText(file);
+    }
   };
 
   return (
     <div>
       <h1>Hackathon Leaderboard</h1>
-      <div className="mb-4">
-        <label htmlFor="course-select" className="block text-lg font-semibold">
-          Select Course:
+      <div style={{ marginBottom: '20px' }}>
+        <label>
+          Upload Groups JSON:
+          <input type="file" accept=".json" onChange={handleFileUpload} />
         </label>
-        <select
-          id="course-select"
-          value={selectedCourse}
-          onChange={handleCourseChange}
-          className="p-2 rounded border"
-        >
-          <option value="fsd">Full Stack Development (FSD)</option>
-          <option value="sdet">Software Development Engineer in Test (SDET)</option>
-          <option value="da">Data Analytics (DA)</option>
-        </select>
       </div>
-      <Leaderboard groups={filteredGroups} />
+      <Leaderboard groups={groups} />
     </div>
   );
 };

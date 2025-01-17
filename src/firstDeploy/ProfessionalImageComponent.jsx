@@ -30,7 +30,7 @@ const ProfessionalImageComponent = () => {
 
         {/* YouTube Button */}
         <a
-          href="https://www.youtube.com/live/qgy0SEMjRjA?feature=shared"
+          href="https://youtube.com/live/wOnJnE7Vs0w?feature=share"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 bg-red-500 text-white py-3 px-6 rounded-lg shadow hover:bg-red-600 transition duration-300"
@@ -44,7 +44,7 @@ const ProfessionalImageComponent = () => {
       <img
         src="https://ik.imagekit.io/74a8dncgy/xto10x.jpg?updatedAt=1737041745666"
         alt="Professional"
-        className="w-full sm:w-2/3 rounded-xl shadow-md mb-10" // Make the image full width on small screens and 2/3 on larger screens
+        className="w-2/3 rounded-xl shadow-md mb-10" // Rounded corners and smaller size
       />
 
     </div>
