@@ -1,0 +1,76 @@
+{
+  "groups": [
+    {
+      "groupName": "Crimson Falcons",
+      "repoOwner": "MayuR397",
+      "repoName": "autoQuestions",
+      "course" : "fsd"
+    },
+    {
+      "groupName": "Sapphire Blades",
+      "repoOwner": "MayuR397",
+      "repoName": "mathematical_opeartor",
+      "course" : "fsd"
+    },
+    {
+      "groupName": "Golden Strikers",
+      "repoOwner": "MayuR397",
+      "repoName": "JS101_Learning_Javascript",
+      "course" : "sdet"
+    },
+    {
+      "groupName": "Emerald Raptors",
+      "repoOwner": "MayuR397",
+      "repoName": "autoQuestions",
+      "course" : "fsd"
+    },
+    {
+      "groupName": "Silver Arrows",
+      "repoOwner": "MayuR397",
+      "repoName": "mathematical_opeartor",
+      "course" : "sdet"
+    },
+    {
+      "groupName": "Thunder Hawks",
+      "repoOwner": "MayuR397",
+      "repoName": "JS101_Learning_Javascript",
+      "course" : "da"
+    },
+    {
+      "groupName": "Iron Titans",
+      "repoOwner": "MayuR397",
+      "repoName": "autoQuestions",
+      "course" : "da"
+    },
+    {
+      "groupName": "Shadow Guardians",
+      "repoOwner": "MayuR397",
+      "repoName": "mathematical_opeartor",
+      "course" : "sdet"
+    },
+    {
+      "groupName": "Blazing Comets",
+      "repoOwner": "MayuR397",
+      "repoName": "JS101_Learning_Javascript",
+      "course" : "da"
+    },
+    {
+      "groupName": "Venom Wolves",
+      "repoOwner": "MayuR397",
+      "repoName": "autoQuestions",
+      "course" : "da"
+    },
+    {
+      "groupName": "Lunar Knights",
+      "repoOwner": "MayuR397",
+      "repoName": "mathematical_opeartor",
+      "course" : "da"
+    },
+    {
+      "groupName": "Frost Giants",
+      "repoOwner": "MayuR397",
+      "repoName": "JS101_Learning_Javascript",
+      "course" : "da"
+    }
+  ]
+}
