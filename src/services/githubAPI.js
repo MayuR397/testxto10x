@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const API_URL = 'https://api.github.com';
-const TOKEN = process.env.TOKEN;
-console.log('TOKEN:', process.env.TOKEN);
+const TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
+console.log('TOKEN:', import.meta.env);
 
 
 
