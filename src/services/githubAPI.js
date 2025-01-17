@@ -1,8 +1,7 @@
-// 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
 import axios from 'axios';
 
 const API_URL = 'https://api.github.com';
-const TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+const TOKEN = process.env.TOKEN;
 
 
 const apiClient = axios.create({
